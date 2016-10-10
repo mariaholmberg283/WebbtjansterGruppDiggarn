@@ -25,6 +25,6 @@ def getPlaying(channelID):
     return "No info available"
 
 try:
-    print getPlaying(223)['artist']
+    print getPlaying(223)['description']
 except:
     print "N/A"
