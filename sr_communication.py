@@ -24,4 +24,7 @@ def getPlaying(channelID):
         return formattedDict['nextsong']
     return "No info available"
 
-print getPlaying(223)
+try:
+    print getPlaying(223)['artist']
+except:
+    print "N/A"
