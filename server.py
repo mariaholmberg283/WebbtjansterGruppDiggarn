@@ -11,6 +11,12 @@ def index():
     dictionary = sr_communication.getChannels()
     return render_template('index.html', channels=dictionary['channel'])
 
+@app.route('/radiochannel')
+def radiochannel():
+    dictionary = sr_communication.getChannels()
+    return render_template('radiochannel.html', channels=dictionary['channel']) 
+
+
 
 #API
 @app.route('/api/v1.0/channels/', methods=['GET'])
@@ -22,6 +28,8 @@ def getChannels():
 def getChannel(channelID):
     channel = sr_communication.getChannel(channelID)
     return json.dumps(channel)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
