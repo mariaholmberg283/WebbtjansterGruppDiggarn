@@ -36,12 +36,10 @@
                         <fieldset>
                             <div class="form-group">
                                 <label for="sel1"><h2>Välj SR station</h2></label>
-                                <select class="form-control" id="sel1">
-                                    <option>P1</option>
-                                    <option>P2</option>
-                                    <option>P3</option>
-                                    <option>P4</option>
-                                    <option>Din Gata</option>
+                                <select class="form-control" id="sel1">                                    
+                                    {% for x in channels: %}
+                                        <option>{{x['@name']}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </fieldset>
