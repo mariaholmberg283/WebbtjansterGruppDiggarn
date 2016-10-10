@@ -12,3 +12,16 @@ def getChannel(channelID):
     channelDict = xmltodict.parse(r.content)
     formattedDict = channelDict['sr']['channel']
     return formattedDict
+
+def getPlaying(channelID):
+    urlLink = "http://api.sr.se/api/v2/playlists/rightnow?channelid=" + str(channelID)
+    r = requests.get(urlLink)
+    playlistDict = xmltodict.parse(r.content)
+    formattedDict = playlistDict['sr']['playlist']
+    if 'song' in formattedDict:
+        return formattedDict['song']
+    elif 'nextsong' in formattedDict:
+        return formattedDict['nextsong']
+    return "No info available"
+
+print getPlaying(223)
