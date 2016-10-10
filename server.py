@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template
-import requests, xmltodict
-from xml.etree import ElementTree
+import requests, xmltodict, sr_communication
 
 app = Flask(__name__)
 
@@ -11,13 +10,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/test')
+@app.route('/test/')
 def testAPI():
-    r = requests.get("http://api.sr.se/api/v2/playlists/rightnow?channelid=2576")
-    newDict = xmltodict.parse(r.content)
-    return newDict['sr']['playlist']['song']['description']
+    dictionary = sr_communication.getChannels()
+    return render_template('debugsite.html', name=str(dictionary['channel']))
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
-testAPI()
