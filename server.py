@@ -14,7 +14,8 @@ def index():
 @app.route('/radiochannel')
 def radiochannel():
     dictionary = sr_communication.getChannels()
-    return render_template('radiochannel.html', channels=dictionary['channel']) 
+    desc = sr_communication.getPlaying(223)
+    return render_template('radiochannel.html', channels=dictionary['channel'], playing=desc['description']) 
 
 
 
