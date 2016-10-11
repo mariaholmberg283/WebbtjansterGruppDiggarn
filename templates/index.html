@@ -1,36 +1,6 @@
 <!DOCTYPE html>
 <html lang="utf-8">
-<head>
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="" name="description">
-    <meta content="" name="author">
-
-    <title>Projekt i webbtjänster Diggarn</title><!-- Bootstrap Core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet"><!-- Custom CSS -->
-    <link href="static/css/full-width-pics.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-
-
-    <header class="image-bg-fluid-height">
-        <div class="row">
-            <div class="col-sm-6">
-                <img alt="SR Logo" id="SRlogo" class="img-responsive img-center" src="static/images/SverigeSRadio_2010.png"></div>
-            <div class="col-sm-6">
-                <img alt="Spotify Logo" class="img-responsive img-center" src="static/images/Spotify_Logo_RGB_Green.png"></div>
-        </div>
-    </header>
+{% include "header.html" %}
     <!-- Content Section -->
     <section>
         <div class="container">
@@ -52,24 +22,5 @@
                 </div>
             </div>
             <!-- Footer -->
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p>Copyright &copy; Your Website 2016</p>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container -->
-            </footer>
-            <!-- jQuery -->
-            <script src="js/jquery.js">
-            </script> <!-- Bootstrap Core JavaScript -->
-             
-            <script src="js/bootstrap.min.js">
-            </script> 
-        </div>
-    </section>
-</body>
-</html>
+        
+{% include "footer.html" %}
