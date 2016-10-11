@@ -20,11 +20,21 @@ def getPlaying(channelID):
     formattedDict = playlistDict['sr']['playlist']
     if 'song' in formattedDict:
         return formattedDict['song']
-    elif 'nextsong' in formattedDict:
-        return formattedDict['nextsong']
-    return "No info available"
+    else:
+        return {'error': 'No info available'}
 
 try:
     print getPlaying(223)['description']
 except:
     print "N/A"
+
+    
+def nextPlaying(channelID):
+    urlLink = "http://api.sr.se/api/v2/playlists/rightnow?channelid=" + str(channelID)
+    r = requests.get(urlLink)
+    playlistDict = xmltodict.parse(r.content)
+    formattedDict = playlistDict['sr']['playlist']
+    if 'nextsong' in formattedDict:
+        return formattedDict['nextsong']
+    else:
+        return {'error': 'No info available'}

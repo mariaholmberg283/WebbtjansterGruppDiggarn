@@ -26,7 +26,16 @@
             <div class="panel panel-default">
                 <!--för att koden ska veta att det är name i channel. -->
                 <p> {{channel['@name']}} </p>
-                
+                {% if 'error' not in nowPlaying: %}
+                <p>{{nowPlaying['description']}}</p>
+                {% else: %}
+                <p>Ingen information tillgänglig</p>
+                {% endif %}
+                {% if 'error' not in nextSong: %}
+                <p>{{nextSong['description']}}</p>
+                {% else: %}
+                <p>Ingen information tillgänglig</p>
+                {% endif %}
             </div>
                 
             </div>
