@@ -8,10 +8,11 @@
     <meta content="" name="author">
 
     <title>Projekt i webbtjänster Diggarn</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="static/css/full-width-pics.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full-width-pics.min.css') }}" >
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    
    
 </head>
 
@@ -21,8 +22,8 @@
     <header class="image-bg-fluid-height">
         <div class="row">
             <div class="col-sm-6">
-                <img alt="SR Logo" id="SRlogo" class="img-responsive img-center" src="static/images/SverigeSRadio_2010.png"></div>
+                <img alt="SR Logo" id="SRlogo" class="img-responsive img-center" src="{{ url_for('static', filename='images/SverigeSRadio_2010.png') }}"></div>
             <div class="col-sm-6">
-                <img alt="Spotify Logo" class="img-responsive img-center" src="static/images/Spotify_Logo_RGB_Green.png"></div>
+                <img alt="Spotify Logo" class="img-responsive img-center" src="{{ url_for('static', filename='images/Spotify_Logo_RGB_Green.png') }}"></div>
         </div>
     </header>
