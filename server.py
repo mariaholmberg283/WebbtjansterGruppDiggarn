@@ -13,6 +13,7 @@ def index():
 
 @app.route('/radiochannel/<channelID>')
 def radiochannel(channelID):
+    dictionary2 = sr_communication.getChannel(channelID)
     dictionary = sr_communication.getChannels()
     return render_template('radiochannel.html', channels=dictionary['channel']) 
 
