@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import requests, xmltodict, sr_communication, json
 
 app = Flask(__name__)
@@ -23,17 +23,17 @@ def radiochannel(channelID):
 @app.route('/api/v1.0/channels/', methods=['GET'])
 def getChannels():
     dictionary = sr_communication.getChannels()
-    return json.dumps(dictionary)
+    return jsonify(dictionary)
 
 @app.route('/api/v1.0/channels/<channelID>', methods=['GET'])
 def getChannel(channelID):
     channel = sr_communication.getChannel(channelID)
-    return json.dumps(channel)
+    return jsonify(channel)
 
 @app.route('/api/v1.0/channels/<channelID>/playing')
 def getChannelPlaying(channelID):
     playlist = sr_communication.getPlaying(channelID)
-    return json.dumps(playlist)
+    return jsonify(playlist)
 
 
 if __name__ == "__main__":
