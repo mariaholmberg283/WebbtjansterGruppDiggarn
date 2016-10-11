@@ -18,19 +18,24 @@ body {
 }
 
 .image-bg-fluid-height {
-	background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
+	background: url('http://all4desktop.com/data_images/original/4238051-background.jpg') no-repeat center center scroll;
     padding: 100px 0;
 }
 
 .image-bg-fixed-height {
-	background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
-    height: 450px;
+	background: url('http://all4desktop.com/data_images/original/4238051-background.jpg') no-repeat center center scroll;
+    
 }
 
 .img-center {
 	margin: 0 auto;
+    width: 80%;
+    height: 80%;
 }
 
+#SRlogo{
+    margin-top: 40px;
+}
 section {
     padding: 75px 0;
 }
