@@ -36,9 +36,9 @@
                         <fieldset>
                             <div class="form-group">
                                 <label for="sel1"><h2>Välj SR station</h2></label>
-                                <select class="form-control" id="sel1">                                    
+                                <select class="form-control" id="sel1" onchange="location = this.value;">                                    
                                     {% for x in channels: %}
-                                        <option>{{x['@name']}}</option>
+                                        <option value="radiochannel/{{x['@id']}}">{{x['@name']}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
