@@ -24,17 +24,22 @@
 
 
     <header class="image-bg-fluid-height">
-        <img alt="SR Logo" class="img-responsive img-center" src="static/images/sr.png">
+        <div class="row">
+            <div class="col-sm-6">
+                <img alt="SR Logo" id="SRlogo" class="img-responsive img-center" src="static/images/SverigeSRadio_2010.png"></div>
+            <div class="col-sm-6">
+                <img alt="Spotify Logo" class="img-responsive img-center" src="static/images/Spotify_Logo_RGB_Green.png"></div>
+        </div>
     </header>
     <!-- Content Section -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1>Diggarn</h1>
+                    <h1>Diggaren</h1>
                     <form>
                         <fieldset>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="sel1"><h2>Välj SR station</h2></label>
                                 <select class="form-control" id="sel1" onchange="location = this.value;">                                    
                                     {% for x in channels: %}
