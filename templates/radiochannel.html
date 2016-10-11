@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="utf-8">
 {% include "header.html" %}
+    
     <!-- Content Section -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1>Diggarn</h1>
+                    
                     <form>
                         <fieldset>
                             <div class="form-group">
                                 <label for="sel1"><h2>Välj SR station</h2></label>
-                                <select class="form-control" id="sel1">                                    
+                                <select class="form-control" id="sel1" onchange="location = this.value;">                                          
                                     {% for x in channels: %}
-                                        <option>{{x['@name']}}</option>
+                                        <option value="{{x['@id']}}"> {{x['@name']}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -22,12 +24,13 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <!--för att koden ska veta att det är name i channel. -->
+                <p> {{channel['@name']}} </p>
                 
-                <div class="panel-body">{{playing}}</div>
+            </div>
                 
             </div>
             
             <!-- Footer -->
-            <!DOCTYPE html>
-<html lang="utf-8">
+            
 {% include "footer.html" %}

@@ -15,7 +15,7 @@ def index():
 def radiochannel(channelID):
     dictionary2 = sr_communication.getChannel(channelID)
     dictionary = sr_communication.getChannels()
-    return render_template('radiochannel.html', channels=dictionary['channel']) 
+    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2) 
 
 
 
