@@ -29,7 +29,7 @@
                 
                 <p>Spelas efter:</p>
                 {% if 'error' not in nextSong: %}
-                <p>{{nextSong['title']}} - {{nowPlaying['artist']}}</p>
+                <p>{{nextSong['title']}} - {{nextSong['artist']}}</p>
                 {% else: %}
                 <p>Ingen information tillgänglig</p>
                 {% endif %}
