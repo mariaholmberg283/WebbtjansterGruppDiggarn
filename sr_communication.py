@@ -21,7 +21,7 @@ def getPlaying(channelID):
     if 'song' in formattedDict:
         return formattedDict['song']
     else:
-        return {'error': 'No info available'}
+        return {'error': 'No information available'}
 
 try:
     print getPlaying(223)['description']
@@ -37,4 +37,4 @@ def nextPlaying(channelID):
     if 'nextsong' in formattedDict:
         return formattedDict['nextsong']
     else:
-        return {'error': 'No info available'}
+        return {'error': 'No information available'}

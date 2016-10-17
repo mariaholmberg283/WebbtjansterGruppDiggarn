@@ -22,7 +22,7 @@ def radiochannel(channelID):
 
 def searchSpotify(songInfo):
     if 'error' in songInfo:
-        return {'error': "No information"}
+        return {'error': 'No information available'}
     else:
         response = spotify_communication.getSong(songInfo['artist'], songInfo['title'])
         return response
