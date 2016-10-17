@@ -18,12 +18,12 @@ body {
 }
 
 .image-bg-fluid-height {
-	background: url('http://all4desktop.com/data_images/original/4238051-background.jpg') no-repeat center center scroll;
+	background-color: #ffff;
     padding: 100px 0;
 }
 
 .image-bg-fixed-height {
-	background: url('http://all4desktop.com/data_images/original/4238051-background.jpg') no-repeat center center scroll;
+	background-color: #ffff;
     
 }
 
