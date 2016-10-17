@@ -35,10 +35,12 @@
                 {% endif %}
                 <p>Spelas efter:</p>
                 {% if 'error' not in nextSong: %}
-                <p>{{nextSong['title']}} - {{nowPlaying['artist']}}</p>
+                <p>{{nextSong['title']}} - {{nextSong['artist']}}</p>
                 {% else: %}
                 <p>Ingen information tillgänglig</p>
                 {% endif %}
+                
+                <h1>Spotify: <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></h1>
             </div>
                 
             </div>

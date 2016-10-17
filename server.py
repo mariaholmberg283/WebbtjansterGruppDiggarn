@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, jsonify
-import requests, xmltodict, sr_communication, json
+import requests, xmltodict, sr_communication, spotify_communication, json
 
 app = Flask(__name__)
 
@@ -17,9 +17,15 @@ def radiochannel(channelID):
     dictionary = sr_communication.getChannels()
     nowPlaying = sr_communication.getPlaying(channelID)
     nextSong = sr_communication.nextPlaying(channelID)
-    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, nowPlaying=nowPlaying, nextSong=nextSong) 
+    spotifySong = searchSpotify(nowPlaying)
+    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, nowPlaying=nowPlaying, nextSong=nextSong, spotifySong = spotifySong) 
 
-
+def searchSpotify(songInfo):
+    if 'error' in songInfo:
+        return "Ingen info"
+    else:
+        response = spotify_communication.getSong(songInfo['artist'], songInfo['title'])
+        return response
 
 #API
 @app.route('/api/v1.0/channels/', methods=['GET'])
