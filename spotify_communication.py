@@ -8,7 +8,7 @@ def getSong(artist, title):
     infoSearch = json.loads(r.content)
     formatted = infoSearch['tracks']['items']
     if not formatted:
-        return "Tom"
+        return {'error': "No information"}
     else:
         return formatted
 
