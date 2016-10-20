@@ -27,6 +27,14 @@ def searchSpotify(songInfo):
         response = spotify_communication.getSong(songInfo['artist'], songInfo['title'])
         return response
 
+
+
+#Spotify
+@app.route('/callback', methods=['GET'])
+def callAuthorization():
+    return "Authorization complete"
+
+
 #API
 @app.route('/api/v1.0/channels/', methods=['GET'])
 def getChannels():
