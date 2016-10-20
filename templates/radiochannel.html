@@ -19,33 +19,41 @@
             </div>
                 <div class="panel panel-default panel-body">
                     {%if 'image' in channel:%}
-                    <img src="{{channel['image']}}" height="100" id="img">
+                    <div id="img">
+                        <img src="{{channel['image']}}" height="200" >
+                       
                     {%else:%}
                     
                     <!--för att koden ska veta att det är name i channel. -->
                     <p> {{channel['@name']}} </p>
                     {%endif%}
-                    
-                    <p id="playing">Spelas nu:</p>
-                    {% if 'error' not in nowPlaying: %}
-                    <p id="playingtitle">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</p>
-                    {% else: %}
-                    <p id="playingerror">Ingen låt spelas just nu</p>
-                    {% endif %}
-
-                    <p id="next">Spelas efter:</p>
-                    {% if 'error' not in nextSong: %}
-                    <p id="nexttitle">{{nextSong['title']}} - {{nextSong['artist']}}</p>
-                    {% else: %}
-                    <p id="nexterror">Ingen låt spelas just nu</p>
-                    {% endif %}
-
-                    <p id="spot">Spotify:</p>
-                    {% if 'error' not in spotifySong: %}
-                    <p id="spotlink"> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></p>
-                    {% else: %}
-                    <p id="spoterror">Låten kan inte hittas på Spotify</p>
-                    {% endif %}
+                    </div>
+                    <div id="info">
+                        <div id="play">
+                        <span class="pre">Spelas nu:</span>
+                        {% if 'error' not in nowPlaying: %}
+                        <span class="title">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
+                        {% else: %}
+                        <span class="error">Ingen låt spelas just nu</span>
+                        {% endif %}
+                        </div>
+                        <div id="next">
+                        <span class="pre">Spelas efter:</span>
+                        {% if 'error' not in nextSong: %}
+                        <span class="title">{{nextSong['title']}} - {{nextSong['artist']}}</span>
+                        {% else: %}
+                        <span class="error">Ingen låt spelas just nu</span>
+                        {% endif %}
+                        </div>
+                        <div id="spotify">
+                        <span class="pre">Spotify:</span>
+                        {% if 'error' not in spotifySong: %}
+                        <span class="title"> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></span>
+                        {% else: %}
+                        <span class="error">Låten kan inte hittas på Spotify</span>
+                        {% endif %}
+                        </div>
+                    </div>    
                 </div>
                 
             </div>
