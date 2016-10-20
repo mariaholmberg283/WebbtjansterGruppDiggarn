@@ -33,7 +33,7 @@
                 {% else: %}
                 <p>Ingen information tillgänglig</p>
                 {% endif %}
-            
+
                 <p>Spotify:</p>
                 {% if 'error' not in spotifySong: %}
                 <p> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></p>
@@ -41,7 +41,9 @@
                 <p>Ingen information tillgänglig</p>
                 {% endif %}
 
+
             </div>
+
                 
             </div>
             
