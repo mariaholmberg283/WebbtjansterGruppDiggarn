@@ -19,32 +19,32 @@
             </div>
                 <div class="panel panel-default panel-body">
                     {%if 'image' in channel:%}
-                    <img src="{{channel['image']}}" height="100">
+                    <img src="{{channel['image']}}" height="100" id="img">
                     {%else:%}
                     
                     <!--för att koden ska veta att det är name i channel. -->
                     <p> {{channel['@name']}} </p>
                     {%endif%}
                     
-                    <p>Spelas nu:</p>
+                    <p id="playing">Spelas nu:</p>
                     {% if 'error' not in nowPlaying: %}
-                    <p>{{nowPlaying['title']}} - {{nowPlaying['artist']}}</p>
+                    <p id="playingtitle">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</p>
                     {% else: %}
-                    <p>Ingen låt spelas just nu</p>
+                    <p id="playingerror">Ingen låt spelas just nu</p>
                     {% endif %}
 
-                    <p>Spelas efter:</p>
+                    <p id="next">Spelas efter:</p>
                     {% if 'error' not in nextSong: %}
-                    <p>{{nextSong['title']}} - {{nextSong['artist']}}</p>
+                    <p id="nexttitle">{{nextSong['title']}} - {{nextSong['artist']}}</p>
                     {% else: %}
-                    <p>Ingen låt spelas just nu</p>
+                    <p id="nexterror">Ingen låt spelas just nu</p>
                     {% endif %}
 
-                    <p>Spotify:</p>
+                    <p id="spot">Spotify:</p>
                     {% if 'error' not in spotifySong: %}
-                    <p> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></p>
+                    <p id="spotlink"> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></p>
                     {% else: %}
-                    <p>Låten kan inte hittas på Spotify</p>
+                    <p id="spoterror">Låten kan inte hittas på Spotify</p>
                     {% endif %}
                 </div>
                 
