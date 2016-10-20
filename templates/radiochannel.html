@@ -24,21 +24,21 @@
                 {% if 'error' not in nowPlaying: %}
                 <p>{{nowPlaying['title']}} - {{nowPlaying['artist']}}</p>
                 {% else: %}
-                <p>Ingen information tillgänglig</p>
+                <p>Ingen låt spelas just nu</p>
                 {% endif %}
                 
                 <p>Spelas efter:</p>
                 {% if 'error' not in nextSong: %}
                 <p>{{nextSong['title']}} - {{nextSong['artist']}}</p>
                 {% else: %}
-                <p>Ingen information tillgänglig</p>
+                <p>Ingen låt spelas just nu</p>
                 {% endif %}
 
                 <p>Spotify:</p>
                 {% if 'error' not in spotifySong: %}
                 <p> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></p>
                 {% else: %}
-                <p>Ingen information tillgänglig</p>
+                <p>Låten kan inte hittas på Spotify</p>
                 {% endif %}
 
 
