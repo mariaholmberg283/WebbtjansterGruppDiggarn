@@ -61,7 +61,7 @@
                         <div id="spotify">
                         <span class="pre">Spotify:</span>
                         {% if 'error' not in spotifySong: %}
-                        <span class="title"> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></span>
+                        <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
                         {% else: %}
                         <span class="error">Låten kan inte hittas på Spotify</span>
                         {% endif %}
