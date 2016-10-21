@@ -30,10 +30,22 @@ def getPlaying(channelID):
     else:
         return {'error': 'No information available'}
 
-    
+def previousPlaying(channelID):
+    ''' This function gets the channels' playlist which includes information about the previous song and artist.
+        If there is no information available an error-message will appear  '''
+
+    urlLink = "http://api.sr.se/api/v2/playlists/rightnow?channelid=" + str(channelID)
+    r = requests.get(urlLink)
+    playlistDict = xmltodict.parse(r.content)
+    formattedDict = playlistDict['sr']['playlist']
+    if 'previoussong' in formattedDict:
+        return formattedDict['previoussong']
+    else:
+        return {'error': 'No information available'}
+
 def nextPlaying(channelID):
-    ''' This function gets the channels' playlist which includes                   information about the upcoming song and artist.
-        If there is no information available an error-message will appear       '''
+    ''' This function gets the channels' playlist which includes information about the next song and artist.
+        If there is no information available an error-message will appear '''
 
     urlLink = "http://api.sr.se/api/v2/playlists/rightnow?channelid=" + str(channelID)
     r = requests.get(urlLink)
@@ -43,3 +55,4 @@ def nextPlaying(channelID):
         return formattedDict['nextsong']
     else:
         return {'error': 'No information available'}
+
