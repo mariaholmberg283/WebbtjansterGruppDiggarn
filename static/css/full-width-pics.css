@@ -84,11 +84,18 @@ footer {
     font-weight: 800;
 }
 
-#play, #next, #spotify{
+#play, #next{
 	width: 80%;
     margin-left: 200px;
     margin-top: 20px;
 }
+
+#spotify {
+    width: 80%;
+    margin-left: 200px;
+    margin-top: -2px;
+}
+
 
 .title, .error{
     margin-left: 5px;
