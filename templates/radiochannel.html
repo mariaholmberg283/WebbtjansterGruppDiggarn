@@ -38,6 +38,15 @@
                         <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
                         </div>
+                        
+                        <div id="spotify">
+                        <span class="pre">Spotify:</span>
+                        {% if 'error' not in previousSong: %}
+                        <span class="title"> <a href="{{spotifyPrevious[0]['uri']}}">{{spotifyPrevious[0]['name']}}</a></span>
+                        {% else: %}
+                        <span class="error">Låten kan inte hittas på Spotify</span>
+                        {% endif %}
+                        </div>
 
                         <div id="play">
                         <span class="pre">Spelas nu:</span>
