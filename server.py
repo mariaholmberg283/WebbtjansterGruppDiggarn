@@ -34,6 +34,9 @@ def searchSpotify(songInfo):
 def callAuthorization():
     return "Authorization complete"
 
+@app.route('/api')
+def apipage():
+    return render_template('api.html')
 
 #API
 @app.route('/api/v1.0/channels/', methods=['GET'])
