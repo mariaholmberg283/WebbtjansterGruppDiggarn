@@ -99,7 +99,7 @@ footer {
 }
 
 #info{
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 #apiD{
@@ -108,3 +108,10 @@ footer {
     margin-right: 10px;
 }
 
+#backbutton{
+    border: none; 
+}
+
+#backbutton:hover {
+  background-color: white;
+}
