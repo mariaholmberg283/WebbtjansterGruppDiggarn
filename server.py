@@ -18,7 +18,8 @@ def radiochannel(channelID):
     nowPlaying = sr_communication.getPlaying(channelID)
     nextSong = sr_communication.nextPlaying(channelID)
     spotifySong = searchSpotify(nowPlaying)
-    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, nowPlaying=nowPlaying, nextSong=nextSong, spotifySong = spotifySong) 
+    spotifyNext = searchSpotify(nextSong)
+    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, nowPlaying=nowPlaying, nextSong=nextSong, spotifySong = spotifySong, spotifyNext=spotifyNext) 
 
 def searchSpotify(songInfo):
     if 'error' in songInfo:
