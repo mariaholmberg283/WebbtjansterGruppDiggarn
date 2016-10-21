@@ -29,6 +29,16 @@
                     {%endif%}
                     </div>
                     <div id="info">
+                        
+                        <div id="previous">
+                        <span class="pre">Spelades innan:</span>
+                        {% if 'error' not in previousSong: %}
+                        <span class="title">{{previousSong['title']}} - {{previousSong['artist']}}</span>
+                        {% else: %}
+                        <span class="error">Ingen låt spelas just nu</span>
+                        {% endif %}
+                        </div>
+
                         <div id="play">
                         <span class="pre">Spelas nu:</span>
                         {% if 'error' not in nowPlaying: %}
@@ -37,6 +47,7 @@
                         <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
                         </div>
+
                         <div id="next">
                         <span class="pre">Spelas efter:</span>
                         {% if 'error' not in nextSong: %}
@@ -45,6 +56,7 @@
                         <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
                         </div>
+
                         <div id="spotify">
                         <span class="pre">spelas nu Spotify:</span>
                         {% if 'error' not in spotifySong: %}
@@ -53,6 +65,7 @@
                         <span class="error">Låten kan inte hittas på Spotify</span>
                         {% endif %}
                         </div>
+
                         <div id="spotify">
                         <span class="pre">spelas nästa Spotify:</span>
                         {% if 'error' not in spotifyNext: %}

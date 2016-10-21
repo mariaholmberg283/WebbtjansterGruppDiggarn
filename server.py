@@ -15,11 +15,13 @@ def index():
 def radiochannel(channelID):
     dictionary2 = sr_communication.getChannel(channelID)
     dictionary = sr_communication.getChannels()
+    previousSong = sr_communication.previousPlaying(channelID)
     nowPlaying = sr_communication.getPlaying(channelID)
     nextSong = sr_communication.nextPlaying(channelID)
+    spotifyPrevious = searchSpotify(previousSong)
     spotifySong = searchSpotify(nowPlaying)
     spotifyNext = searchSpotify(nextSong)
-    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, nowPlaying=nowPlaying, nextSong=nextSong, spotifySong = spotifySong, spotifyNext=spotifyNext) 
+    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong ,nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext) 
 
 def searchSpotify(songInfo):
     if 'error' in songInfo:
