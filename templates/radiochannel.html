@@ -50,8 +50,9 @@
 
                         <div id="play">
                         <span class="pre">Spelas nu:</span>
+                        
                         {% if 'error' not in nowPlaying: %}
-                        <span class="title">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
+                            <span class="title">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
                         {% else: %}
                         <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}

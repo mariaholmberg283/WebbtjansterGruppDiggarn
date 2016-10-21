@@ -21,7 +21,7 @@ def radiochannel(channelID):
     spotifyPrevious = searchSpotify(previousSong)
     spotifySong = searchSpotify(nowPlaying)
     spotifyNext = searchSpotify(nextSong)
-    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong ,nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext) 
+    return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext) 
 
 def searchSpotify(songInfo):
     if 'error' in songInfo:
