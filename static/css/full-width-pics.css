@@ -19,7 +19,7 @@ body {
 
 .image-bg-fluid-height {
 	background-color: #ffff;
-    padding: 100px 0;
+    padding: 25px 0;
 }
 
 .image-bg-fixed-height {
@@ -35,7 +35,6 @@ body {
 
 
 section {
-    padding: 75px 0;
 }
 
 .section-heading {
@@ -106,7 +105,7 @@ footer {
 }
 
 #info{
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 #apiD{
