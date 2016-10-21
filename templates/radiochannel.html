@@ -46,7 +46,7 @@
                         {% endif %}
                         </div>
                         <div id="spotify">
-                        <span class="pre">spelas nu Spotify:</span>
+                        <span class="pre">Spotify:</span>
                         {% if 'error' not in spotifySong: %}
                         <span class="title"> <a href="{{spotifySong[0]['uri']}}">{{spotifySong[0]['name']}}</a></span>
                         {% else: %}
@@ -54,7 +54,7 @@
                         {% endif %}
                         </div>
                         <div id="spotify">
-                        <span class="pre">spelas nästa Spotify:</span>
+                        <span class="pre">Spotify:</span>
                         {% if 'error' not in spotifyNext: %}
                         <span class="title"> <a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
                         {% else: %}
