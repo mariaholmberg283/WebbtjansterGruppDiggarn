@@ -34,7 +34,7 @@
                         {% if 'error' not in previousSong: %}
                             <span class="title">{{previousSong['title']}} - {{previousSong['artist']}}</span>
                         {% else: %}
-                            <span class="error">Ingen låt spelas just nu</span>
+                            <span class="error">Ingen information tillgänglig</span>
                         {% endif %}
                         </div>
                         
@@ -53,9 +53,8 @@
 
                         <div id="play">
                             <span class="pre">Spelas nu:</span>
-                        
                         {% if 'error' not in nowPlaying: %}
-                            <span class="title">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
+                            <span class="title"> <a href="{{spotifySong[0]['uri']}}">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</a> </span>
                         {% else: %}
                             <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
@@ -75,25 +74,24 @@
                         </div>
 
                         <div id="next">
-                        
-                        {% if 'error' not in nextSong: %}
                             <span class="pre">Spelas efter:</span>
+                        {% if 'error' not in nextSong: %}
                             <span class="title">{{nextSong['title']}} - {{nextSong['artist']}}</span>
-                        {% elif 'error' in nextSong: %}
-                            <span></span>    
+                          
                         {% else: %}
-                            <span class="error">Ingen låt spelas just nu</span>
+                            <span class="error">Ingen information tillgänglig</span>
                         {% endif %}
                         </div>
                         
                 
                         <div id="spotify">
-                            <span class="pre">Spotify:</span>
-
                         {% if 'error' not in spotifyNext: %}
-                            <span class="title"> <a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
+                            <span class="pre">Spotify:</span>
+                            <span class="title"><a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
+                        {% elif 'error' in nextSong: %}
+                            <span></span>  
                         {% else: %}
-                            <span ><b>Spotfiy:</b></span>    
+                            <span><b>Spotfiy:</b></span>    
                             <span class="error">
                             Låten kan inte hittas på Spotify</span>   
                         {% endif %}
