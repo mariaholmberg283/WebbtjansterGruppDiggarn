@@ -54,7 +54,7 @@
                         <div id="play">
                             <span class="pre">Spelas nu:</span>
                         {% if 'error' not in nowPlaying: %}
-                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} </span>
+                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} <a href="{{spotifySong[0]['uri']}}"> <img src="{{ url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png') }}" height="15"></a> </span>
                         {% else: %}
                             <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
@@ -100,6 +100,7 @@
                         
                     </div>    
                 </div>
+                
                 
             </div>
             
