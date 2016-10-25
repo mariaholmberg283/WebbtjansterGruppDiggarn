@@ -67,6 +67,10 @@ footer {
 }
 
 /* our css*/
+.row{
+	margin-top: 40px;
+}
+
 #SRlogo{
     margin-top: 40px;
 }
