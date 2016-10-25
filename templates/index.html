@@ -5,10 +5,10 @@
                     <form>
                         <fieldset>
                             <div class="form-group ">
-                                <label for="sel1"><h2>Välj SR station</h2></label>
-                                <select class="form-control" id="sel1" onchange="location = this.value;">     <option selected disabled>Välj kanal</option>                              
+                                
+                                <select class="form-control" id="sel1" onchange="location = this.value;">                                   <option selected disabled>Vilken kanal lyssnar du på?</option>                              
                                     {% for x in channels: %}
-                                        <option value="radiochannel/{{x['@id']}}">{{x['@name']}}</option>
+                                    <option value="radiochannel/{{x['@id']}}">{{x['@name']}}</option>
                                     {% endfor %}
                                 </select>
                             </div>

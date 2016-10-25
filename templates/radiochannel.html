@@ -6,10 +6,10 @@
                     <form>
                         <fieldset>
                             <div class="form-group">
-                                <label for="sel1"><h2></h2></label>
+                                
                                 <select class="form-control" id="sel1" onchange="location = this.value;">                                                               <option selected disabled>Vilken kanal lyssnar du på?</option>
                                     {% for x in channels: %}
-                                        <option value="{{x['@id']}}"> {{x['@name']}}</option>
+                                            <option value="{{x['@id']}}"> {{x['@name']}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -43,7 +43,7 @@
                             <span class="pre">Spotify:</span>
                             <span class="title"><a href="{{spotifyPrevious[0]['uri']}}">{{spotifyPrevious[0]['name']}}</a></span>
                         {% elif 'error' in previousSong: %}
-                            <span></span>    
+                            <span class="space"></span>    
                         {% else: %}
                             <span ><b>Spotfiy:</b></span>    
                             <span class="error">
@@ -54,7 +54,7 @@
                         <div id="play">
                             <span class="pre">Spelas nu:</span>
                         {% if 'error' not in nowPlaying: %}
-                            <span class="title"> <a href="{{spotifySong[0]['uri']}}">{{nowPlaying['title']}} - {{nowPlaying['artist']}}</a> </span>
+                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} </span>
                         {% else: %}
                             <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
@@ -65,7 +65,7 @@
                         <div id="spotifyplay">
                             <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
                         {% elif 'error' in nowPlaying: %}
-                            <span class="error"></span>
+                            <span class="space"></span>
                         {% else: %}
                             <span ><b>Spotfiy:</b></span>    
                         <span class="error">
@@ -89,7 +89,7 @@
                             <span class="pre">Spotify:</span>
                             <span class="title"><a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
                         {% elif 'error' in nextSong: %}
-                            <span></span>  
+                            <span class="space"></span>  
                         {% else: %}
                             <span><b>Spotfiy:</b></span>    
                             <span class="error">
