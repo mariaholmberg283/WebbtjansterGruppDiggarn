@@ -23,14 +23,17 @@ def radiochannel(channelID):
     spotifyNext = searchSpotify(nextSong)
     return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext) 
 
-def searchSpotify(songInfo):
-    if 'error' in songInfo:
+def getArtist(artist):
+
+    searchQuery = artist
+    searchQuery = searchQuery.replace(" ", "%20")
+    r = requests.get("https://api.spotify.com/v1/search?q=" + searchQuery + "&type=track")
+    infoSearch = json.loads(r.content)
+    formatted = infoSearch['tracks']['items']
+    if not formatted:
         return {'error': 'No information available'}
     else:
-        response = spotify_communication.getSong(songInfo['artist'], songInfo['title'])
-        return response
-
-
+        return formatted
 
 #Spotify
 @app.route('/callback', methods=['GET'])
