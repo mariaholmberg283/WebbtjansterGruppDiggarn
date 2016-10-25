@@ -51,36 +51,12 @@ def getChannels():
 @app.route('/api/v1.0/channels/<channelID>', methods=['GET'])
 def getChannel(channelID):
     channel = sr_communication.getChannel(channelID)
-    channelInfo = {
-        'id': channelID,
-        'name': channel['@name'],
-        'image': channel['image']
-        }
-    previousSong = sr_communication.previousPlaying(channelID)
-    if 'error' not in previousSong:
-        channelInfo['previousSong'] = {
-            'title': previousSong['title'],
-            'artist': previousSong['artist']
-            }
-    currentSong = sr_communication.getPlaying(channelID)
-    if 'error' not in currentSong:
-        channelInfo['currentSong'] = {
-            'title': currentSong['title'],
-            'artist': currentSong['artist']
-            }
-    nextSong = sr_communication.nextPlaying(channelID)
-    if 'error' not in nextSong:
-        channelInfo['nextSong'] = {
-            'title': nextSong['title'],
-            'artist': nextSong['artist']
-            }
-    
-    return jsonify(channelInfo)
+    return jsonify(channel)
 
 @app.route('/api/v1.0/channels/<channelID>/playlist')
 def getChannelPlaylist(channelID):
     channelInfo = {
-        'id': channelID
+        'channelID': channelID
         }
     previousSong = sr_communication.previousPlaying(channelID)
     if 'error' not in previousSong:
@@ -90,7 +66,10 @@ def getChannelPlaylist(channelID):
             }
         spotifySong = searchSpotify(previousSong)
         if 'error' not in spotifySong:
-            channelInfo['previousSong']['spotify'] = spotifySong[0]['uri']
+            channelInfo['previousSong']['spotify'] = {
+                'id': spotifySong[0]['id'],
+                'uri': spotifySong[0]['uri']
+                }
     
     currentSong = sr_communication.getPlaying(channelID)
     if 'error' not in currentSong:
@@ -100,7 +79,10 @@ def getChannelPlaylist(channelID):
             }
         spotifySong = searchSpotify(currentSong)
         if 'error' not in spotifySong:
-            channelInfo['currentSong']['spotify'] = spotifySong[0]['uri']
+            channelInfo['currentSong']['spotify'] = {
+                'id': spotifySong[0]['id'],
+                'uri': spotifySong[0]['uri']
+                }
         
     nextSong = sr_communication.nextPlaying(channelID)
     if 'error' not in nextSong:
@@ -110,7 +92,10 @@ def getChannelPlaylist(channelID):
             }
         spotifySong = searchSpotify(nextSong)
         if 'error' not in spotifySong:
-            channelInfo['nextSong']['spotify'] = spotifySong[0]['uri']
+            channelInfo['nextSong']['spotify'] = {
+                'id': spotifySong[0]['id'],
+                'uri': spotifySong[0]['uri']
+                }
     
     return jsonify(channelInfo)
 

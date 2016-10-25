@@ -5,7 +5,97 @@
                 </div>
             </div>
             <div>
-                <p>CONTENT</p>
+                <h1>Introduktion</h1>
+                <p>Detta API tillåter utvecklare att hitta Sveriges Radios kanaler, deras spellistor och Spotifylänkar till låtarna.</p>
+                <p>Värt att notera är att Spotifyfunktionen inte är 100% funktionell. Anledning till varför beskrivs mer detaljerat i relevanta områden i texten.</p>
+                
+                <h1>Visa alla kanaler</h1>
+                <p><strong>URL: </strong>/api/v1.0/channels</p>
+                <p><strong>Metod: </strong>GET</p>
+                <p><strong>Parametrar: </strong> inga</p>
+                <p><strong>Beskrivning: </strong>Skickar tillbaka en lista på Sveriges Radios (tillgängliga) kanaler och information.</p>
+                <h4>Exempel</h4>
+                    <pre>
+{
+    "channel": [
+    {
+        "@id": "132", 
+        "@name": "P1", 
+        "channeltype": "Rikskanal", 
+        "color": "31a1bd", 
+        "image": "http://sverigesradio.se/....", 
+        "imagetemplate": "http://sverigesradio.se/sida/....", 
+        "liveaudio": {
+          "@id": "132", 
+          "statkey": "/app/direkt/p1[k(132)]", 
+          "url": "http://sverigesradio.se/..."
+        }, 
+        "scheduleurl": "http://api.sr.se/v2/...", 
+        "siteurl": "http://sverigesradio.se/p1", 
+        "tagline": null, 
+        "xmltvid": "p1.sr.se"
+      } .....
+    ]
+}
+                    </pre>
+                <p>OBS: Vissa kanaler som P3 Din Gata dyker inte upp på listan fastän kanalen finns.</p>
+                
+                <h1>Hämta en kanal</h1>
+                <p><strong>URL: </strong>/api/v1.0/channels</p>
+                <p><strong>Metod: </strong>GET</p>
+                <p><strong>Parametrar: </strong> channel ID</p>
+                <h4>Exempel</h4>
+                    <pre>
+{
+  "@id": "212", 
+  "@name": "P4 G\u00f6teborg", 
+  "channeltype": "Lokal kanal", 
+  "color": "c31eaa", 
+  "image": "http://sverigesradio.se/...", 
+  "imagetemplate": "http://sverigesradio.se/sida/images/212/2186768_512_512.jpg", 
+  "liveaudio": {
+    "@id": "212", 
+    "statkey": "/app/direkt/p4 g\u00f6teborg[k(212)]", 
+    "url": "http://sverigesradio.se/topsy/direkt/212.mp3"
+  }, 
+  "scheduleurl": "http://api.sr.se/v2/...", 
+  "siteurl": "http://sverigesradio.se/goteborg/", 
+  "xmltvid": "p4gbg.sr.se"
+}
+                    </pre>
+                <p>OBS: Information om kanaler som inte finns med i listan (Hämta alla kanaler) kan hämtas om du vet ID:t för kanalen. Exempelvis P3 Din Gata = kanal ID 2576.</p>
+                
+                <h1>Hämta en kanals playlist</h1>
+                <p><strong>URL: </strong>/api/v1.0/channels/{id}/playlist</p>
+                <p><strong>Metod: </strong>GET</p>
+                <p><strong>Parametrar: </strong> channel ID</p>
+                <p><strong>Beskrivning: </strong>Skickar tillbaka en lista på låtar som kanalen har spelat, spelar just nu och vad de ska spela härnäst.</p>
+                <p>Föregående, nuvarande och nästkommande låt skickas tillbaka om denna information är tillgänglig. Detta betyder om ingen information om t.ex. föregående låt finns, så kommer ingen information om en föregående låt finnas. Felhantering rekommenderas om din applikation är beroende av låtinformationen.</p>
+                <p>Observera att Spotifysökningen inte är 100% funktionell: låten på Spotify kan vara annorlunda från låten som spelas på SR:s kanal eller att ingen låt kunde hittas efter sökningen fastän låten finns på Spotify.</p>
+                <h4>Exempel</h4>
+                    <pre>
+{
+  "channelID": "164", 
+  "nextSong": {
+    "artist": "H\u00e5kan Hellstr\u00f6m & Silvana Imam", 
+    "spotify": {
+      "id": "6WN2BVx64UbzTSakA7S0Hj", 
+      "uri": "spotify:track:6WN2BVx64UbzTSakA7S0Hj"
+    }, 
+    "title": "Du fria (Nisj remix)"
+  }, 
+  "previousSong": {
+    "artist": "Kartellen", 
+    "spotify": {
+      "id": "73gBONWxcLlEw4cV79NUbB", 
+      "uri": "spotify:track:73gBONWxcLlEw4cV79NUbB"
+    }, 
+    "title": "Trolltider"
+  }
+}
+                    </pre>
+                
+                
             </div>
             
             <div class="text-center">
