@@ -116,7 +116,13 @@ footer {
     margin-top: 5px;
 }
 
-#apiD, #loginbutton{
+#apiD{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.logbutton{
     float: right;
     margin-top: 10px;
     margin-right: 10px;
@@ -133,12 +139,11 @@ footer {
   background-color: white;
 }
 
-#loginbutton{
+.logbutton{
     border: none; 
     background-color: white;
 }
 
-#loginbutton:hover {
+.logbutton:hover {
   background-color: white;
 }
-
