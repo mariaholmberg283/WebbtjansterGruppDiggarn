@@ -34,9 +34,9 @@ def radiochannel(channelID):
     spotifySong = searchSpotify(nowPlaying)
     spotifyNext = searchSpotify(nextSong)
     if authorizedHeader:
-        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext)
+        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext, loggedIn = True)
     else:
-        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext) 
+        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext, loggedIn = True) 
 
 '''
     Säkert logga ut användaren, dirigera till startsidan
@@ -92,13 +92,10 @@ def getAccessToken(code):
     accessToken = responseData['access_token']
     authorizedHeader = {'Authorization': 'Bearer {}'.format(accessToken) }
 
-    profileRequest = requests.get("http://api.spotify.com/v1/me", headers=authorizedHeader)
-    profile = json.loads(profileRequest.content)
-
 '''
     API-dokumentation
 '''
-app.route('/api')
+@app.route('/api')
 def apipage():
     return render_template('api.html')
 
