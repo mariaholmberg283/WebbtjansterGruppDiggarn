@@ -102,11 +102,7 @@ footer {
 #spotifyplay{
     margin-bottom: -15px;
 	margin-top: 5px;
-}
-
-#spotifyplayer{
-    float:left;
-    margin-left: 100px;
+    margin-left: 0px;
 }
 
 .title, .error{

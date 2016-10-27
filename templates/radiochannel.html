@@ -54,22 +54,21 @@
                         <div id="play">
                             <span class="pre">Spelas nu:</span>
                         {% if 'error' not in nowPlaying: %}
-                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} {% elif 'error' not in spotifySong: %}<a href="{{spotifySong[0]['uri']}}"> <img src="{{ url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png') }}" height="15"></a> </span>
-                        {% else: %}
-                            <span class="error">Ingen låt spelas just nu</span>
-                        {% endif %}
-                        </div>
-                        
-                       
-                        {% if 'error' not in spotifySong: %}
+                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
+                            {% if 'error' not in spotifySong: %}
+                            <a href="{{spotifySong[0]['uri']}}"><img src="{{url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png')}}" height="15"></a>  
                         <div id="spotifyplay">
                             <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
-                        {% elif 'error' in nowPlaying: %}
-                            <span class="space"></span>
-                        {% else: %}
+                        </div>
+                            {% else: %}
+                        <div>
                             <span ><b>Spotfiy:</b></span>    
-                        <span class="error">
-                            Sökningen på Spotify gav inget resultat</span>   
+                            <span class="error">Sökningen på Spotify gav inget resultat</span>   
+                        </div>
+                            {% endif %}
+                            
+                        {% else: %}
+                            <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
                         </div>
 
