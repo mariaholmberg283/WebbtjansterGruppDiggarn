@@ -15,6 +15,19 @@ def getSong(artist, title):
     else:
         return formatted
 
+def getSongExtended(artist, title, auth):
+    searchQuery = artist + " " + title
+    searchQuery = searchQuery.replace(" ", "%20")
+    searchQuery = searchQuery.replace("&", "")
+    searchQuery = searchQuery.replace("'", "")
+    r = requests.get("https://api.spotify.com/v1/search?q=" + searchQuery + "&type=track", headers=auth)
+    infoSearch = json.loads(r.content)
+    formatted = infoSearch['tracks']['items']
+    if not formatted:
+        return {'error': 'No information available'}
+    else:
+        return formatted
+
 def getArtist(artist):
 
     searchQuery = artist
