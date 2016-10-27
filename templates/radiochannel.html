@@ -54,24 +54,26 @@
                         <div id="play">
                             <span class="pre">Spelas nu:</span>
                         {% if 'error' not in nowPlaying: %}
-                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} {% elif 'error' not in spotifySong: %}<a href="{{spotifySong[0]['uri']}}"> <img src="{{ url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png') }}" height="15"></a> </span>
+                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}} 
+                            {% if 'error' not in spotifySong: %}
+                            <a href="{{spotifySong[0]['uri']}}"> <img src="{{ url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png') }}" height="15"></a> </span>
+                        <div id="spotifyplay">
+                            <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
+                        </div>
+                            {% else: %}
+                            <span ><b>Spotfiy:</b></span>    
+                            <span class="error">
+                            Låten kan inte hittas på Spotify</span>   
+                        {% endif %}
+                        
                         {% else: %}
                             <span class="error">Ingen låt spelas just nu</span>
                         {% endif %}
                         </div>
                         
                        
-                        {% if 'error' not in spotifySong: %}
-                        <div id="spotifyplay">
-                            <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
-                        {% elif 'error' in nowPlaying: %}
-                            <span class="space"></span>
-                        {% else: %}
-                            <span ><b>Spotfiy:</b></span>    
-                        <span class="error">
-                            Låten kan inte hittas på Spotify</span>   
-                        {% endif %}
-                        </div>
+                        
+                        
 
                         <div id="next">
                             <span class="pre">Spelas efter:</span>
@@ -93,7 +95,7 @@
                         {% else: %}
                             <span><b>Spotfiy:</b></span>    
                             <span class="error">
-                            Låten kan inte hittas på Spotify</span>   
+                            Låten kan inte hittas på Spotify</span>     
                         {% endif %}
                         </div>
 

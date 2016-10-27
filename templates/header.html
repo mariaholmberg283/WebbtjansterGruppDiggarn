@@ -19,8 +19,9 @@
 <body>
     
 
-        <button type="button" class="logbutton">
+       
 {% if loggedIn == True: %}
+     <button type="button" class="logbutton">
             <span>
                 <a href="/logoutSpotify">
                 <span id="logoutbutton"><img src="{{url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png')}}" height="25"></span>
