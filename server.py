@@ -97,7 +97,10 @@ def getAccessToken(code):
 '''
 @app.route('/api')
 def apipage():
-    return render_template('api.html')
+    if authorizedHeader:
+        return render_template('api.html', loggedIn = True)
+    else:
+        return render_template('api.html', loggedIn = False)
 
 #API
 '''
