@@ -130,3 +130,19 @@ footer {
 #backbutton:hover {
   background-color: white;
 }
+
+#login {
+	max-width: 400px;
+	border: none;
+	float: right;
+	text-align: center;
+}
+
+#loginbutton{
+    border: none; 
+    background-color: white;
+}
+
+#loginbutton:hover {
+  background-color: white;
+}
