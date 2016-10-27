@@ -36,7 +36,7 @@ def radiochannel(channelID):
     if authorizedHeader:
         return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext, loggedIn = True)
     else:
-        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext, loggedIn = True) 
+        return render_template('radiochannel.html', channels=dictionary['channel'], channel=dictionary2, previousSong = previousSong, nowPlaying=nowPlaying, nextSong=nextSong, spotifyPrevious = spotifyPrevious, spotifySong = spotifySong, spotifyNext=spotifyNext, loggedIn = False) 
 
 '''
     Säkert logga ut användaren, dirigera till startsidan
