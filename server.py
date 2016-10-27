@@ -94,8 +94,6 @@ def getAccessToken(code):
 
     profileRequest = requests.get("http://api.spotify.com/v1/me", headers=authorizedHeader)
     profile = json.loads(profileRequest.content)
-    displayString = "HEJSAN " + profile['display_name'] + "!"
-    return displayString
 
 '''
     API-dokumentation
