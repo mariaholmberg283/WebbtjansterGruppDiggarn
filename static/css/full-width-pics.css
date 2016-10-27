@@ -89,7 +89,6 @@ footer {
 
 #play, #next{
 	width: 80%;
-    margin-left: 200px;
     margin-top: 10px;
 }
 
@@ -102,11 +101,7 @@ footer {
 #spotifyplay{
     margin-bottom: -15px;
 	margin-top: 5px;
-}
-
-#spotifyplayer{
-    float:left;
-    margin-left: 100px;
+    margin-left: 0px;
 }
 
 .title, .error{
@@ -121,10 +116,13 @@ footer {
     margin-top: 5px;
 }
 
-#apiD{
+#apiD, #loginbutton{
     float: right;
     margin-top: 10px;
     margin-right: 10px;
+}
+#apiD{
+	margin-top: 14px;	
 }
 
 #backbutton{
@@ -134,3 +132,13 @@ footer {
 #backbutton:hover {
   background-color: white;
 }
+
+#loginbutton{
+    border: none; 
+    background-color: white;
+}
+
+#loginbutton:hover {
+  background-color: white;
+}
+

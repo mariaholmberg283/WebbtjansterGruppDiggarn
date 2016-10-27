@@ -17,10 +17,21 @@
 </head>
 
 <body>
-    
-    <div id="apiD">
-        <a href="/api">API-dokumentation</a>
+    <div>
+        <button type="button" id="loginbutton">
+            <a href="https://accounts.spotify.com/authorize?client_id=69e933979e0946a8acb19513ae0bc9c1&response_type=code&redirect_uri=http://127.0.0.1:5000/callback&scope=user-read-private" target="_blank">
+            <span id="logbutton"><img src="{{url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png')}}" height="25"></span>
+            <span>Logga in</span></a>
+        </button>
+        <div id="logged-in">
+            <p>{{spotifyResponse}}</p>
+        </div>
+
+        <div id="apiD">
+            <a href="/api">API-dokumentation</a>
+        </div>
     </div>
+    
     <header class="image-bg-fluid-height">
         <div class="row">
             <div class="col-sm-6">
