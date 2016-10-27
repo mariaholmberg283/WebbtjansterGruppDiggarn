@@ -1,107 +1,118 @@
 <!DOCTYPE html>
 <html lang="utf-8">
 {% include "header.html" %}
-    
-   
+    <!--Below follows a dropdown menu for choosing radio channel.  -->
                     <form>
                         <fieldset>
                             <div class="form-group">
-                                
-                                <select class="form-control" id="sel1" onchange="location = this.value;">                                                               <option selected disabled>Vilken kanal lyssnar du på?</option>
-                                    {% for x in channels: %}
-                                            <option value="{{x['@id']}}"> {{x['@name']}}</option>
-                                    {% endfor %}
+                                <select class="form-control" id="sel1" onchange="location = this.value;">                                                                                                   <option selected disabled>Vilken kanal lyssnar du på?</option>
+                                    <!--For every channel in the list channels, print the name of it. Name is taken from XML-code from SR.-->
+{% for x in channels: %}
+                                    <option value="{{x['@id']}}"> {{x['@name']}}</option>
+{% endfor %}
                                 </select>
                             </div>
                         </fieldset>
                     </form>
                 </div>
             </div>
-                <div class="panel panel-default panel-body">
-                    {%if 'image' in channel:%}
-                    <div id="img">
-                        <img src="{{channel['image']}}" height="200" >
-                       
-                    {%else:%}
-                    
-                    <!--för att koden ska veta att det är name i channel. -->
-                    <p> {{channel['@name']}} </p>
-                    {%endif%}
-                    </div>
-                    <div id="info">
-                        <div id="previous">
-                            <span class="pre">Spelades innan:</span>
-                        {% if 'error' not in previousSong: %}
-                            <span class="title">{{previousSong['title']}} - {{previousSong['artist']}}</span>
-                        {% else: %}
-                            <span class="error">Ingen information är tillgänglig från SR</span>
-                        {% endif %}
-                        </div>
-                        
-                        <div id="spotify">
-                        {% if 'error' not in spotifyPrevious: %}
-                            <span class="pre">Spotify:</span>
-                            <span class="title"><a href="{{spotifyPrevious[0]['uri']}}">{{spotifyPrevious[0]['name']}}</a></span>
-                        {% elif 'error' in previousSong: %}
-                            <span class="space"></span>    
-                        {% else: %}
-                            <span ><b>Spotfiy:</b></span>    
-                            <span class="error">
-                            Sökningen på Spotify gav inget resultat</span>   
-                        {% endif %}
-                        </div>
 
-                        <div id="play">
-                            <span class="pre">Spelas nu:</span>
-                        {% if 'error' not in nowPlaying: %}
-                            <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
-                            {% if 'error' not in spotifySong: %}
-                            <a href="{{spotifySong[0]['uri']}}"><img src="{{url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png')}}" height="15"></a>  
+<!--Shows the image of chosen radio channel. -->
+            <div class="panel panel-default panel-body">
+{%if 'image' in channel:%}
+
+                <div id="img">
+                    <img src="{{channel['image']}}" height="200">   
+{%else:%}
+                    
+<!--If image can not be shown, show name of channel.-->
+                    <p>{{channel['@name']}}</p>
+{%endif%}
+                </div>
+                
+                <div id="info">
+                    <div id="previous">
+                        <span class="pre">Spelades innan:</span>
+<!--If there is no error in the get-request for "previousSong", the application prints title and artist.  -->
+{% if 'error' not in previousSong: %}
+                        <span class="title">{{previousSong['title']}} - {{previousSong['artist']}}</span>
+<!--if anything else than no error, print message below.-->
+{% else: %}
+                        <span class="error">Ingen information är tillgänglig från SR</span>
+{% endif %} 
+                    </div>
+                    
+                    <div id="spotify">
+<!--if there is no error in the get-request or search for "spotifyPrevious", the application prints the name from the search on Spotify, make it a link and open the Spotify appication on the computer.-->
+{% if 'error' not in spotifyPrevious: %}
+                        <span class="pre">Spotify:</span>
+                        <span class="title"><a href="{{spotifyPrevious[0]['uri']}}">{{spotifyPrevious[0]['name']}}</a></span>
+<!--if there is an error in the get-request from SR, nothing will show.-->
+{% elif 'error' in previousSong: %}
+                        <span class="space"></span>
+<!--if none of the statements above are true, an error message will show.-->
+{% else: %}
+                        <span ><b>Spotfiy:</b></span>    
+                        <span class="error">Sökningen på Spotify gav inget resultat</span>   
+{% endif %}
+                    </div>
+
+                    <div id="play">
+                        <span class="pre">Spelas nu:</span>
+<!--If there is no error in the get-request for "nowPlaying", the application prints title and artist. -->
+{% if 'error' not in nowPlaying: %}
+                        <span class="title"> {{nowPlaying['title']}} - {{nowPlaying['artist']}}</span>
+<!--if there is no error in the request and search for "spotifySong", an image will show, if clicked will open spotify and search for the title of the song that is played on chosen radio channel. An embeded player from spotify is shown if no error, on click, the song will play and a search is made on spotify.-->
+    {% if 'error' not in spotifySong: %}
+                        <span><a href="{{spotifySong[0]['uri']}}"><img src="{{url_for('static', filename='images/Spotify_Logo_small_RGB_Green .png')}}" height="15"></a></span>  
                         <div id="spotifyplay">
                             <span class="title"><iframe src="https://embed.spotify.com/?uri={{spotifySong[0]['uri']}}" frameborder="0" allowtransparency="true"></iframe></span>
                         </div>
-                            {% else: %}
+<!--if the above statement is false, an error message will show and tell the user that the song wasnt found through oru search on spotify.-->
+    {% else: %}
                         <div>
                             <span ><b>Spotfiy:</b></span>    
                             <span class="error">Sökningen på Spotify gav inget resultat</span>   
                         </div>
-                            {% endif %}
-                            
-                        {% else: %}
-                            <span class="error">Ingen låt spelas just nu</span>
-                        {% endif %}
-                        </div>
+    {% endif %}
+<!--if the statement about "nowPlaying" is false, an error message will show.-->                    
+{% else: %}
+                        <span class="error">Ingen låt spelas just nu</span>
+{% endif %}
+                    </div>
 
-                        <div id="next">
-                            <span class="pre">Spelas efter:</span>
-                        {% if 'error' not in nextSong: %}
-                            <span class="title">{{nextSong['title']}} - {{nextSong['artist']}}</span>
-                          
-                        {% else: %}
-                            <span class="error">Ingen information är tillgänglig från SR</span>
-                        {% endif %}
-                        </div>
+                    <div id="next">
+<!--If there is no error in the get-request for "nextSong", the application prints title and artist. -->
+                        <span class="pre">Spelas efter:</span>
+{% if 'error' not in nextSong: %}
+                        <span class="title">{{nextSong['title']}} - {{nextSong['artist']}}</span>  
+<!--if anything else than no error, print message below.-->
+{% else: %}
+                        <span class="error">Ingen information är tillgänglig från SR</span>
+{% endif %}
+                    </div>
                         
-                
-                        <div id="spotify">
-                        {% if 'error' not in spotifyNext: %}
-                            <span class="pre">Spotify:</span>
-                            <span class="title"><a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
-                        {% elif 'error' in nextSong: %}
-                            <span class="space"></span>  
-                        {% else: %}
-                            <span><b>Spotfiy:</b></span>    
-                            <span class="error">
-                            Sökningen på Spotify gav inget resultat</span>   
-                        {% endif %}
-                        </div>
+                    <div id="spotify">
+<!--if there is no error in the get-request or search for "spotifyNext", the application prints the name from the search on Spotify, make it a link and when clicked, open the Spotify appication on the computer.-->
+{% if 'error' not in spotifyNext: %}
+                        <span class="pre">Spotify:</span>
+                        <span class="title"><a href="{{spotifyNext[0]['uri']}}">{{spotifyNext[0]['name']}}</a></span>
+<!--if there is an error in the get-request from SR, nothing will show.-->
+{% elif 'error' in nextSong: %}
+                        <span class="space"></span> 
+<!--if none of the statements above are true, an error message will show.-->
+{% else: %}
+                        <span><b>Spotfiy:</b></span>    
+                        <span class="error">Sökningen på Spotify gav inget resultat</span>   
+{% endif %}
+                    </div>
 
                         
-                    </div>    
-                </div>
-                
-                
+                </div>    
             </div>
+                
+                
+        </div>
             
             <!-- Footer -->
             

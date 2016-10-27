@@ -4,12 +4,12 @@
     
                     <form>
                         <fieldset>
-                            <div class="form-group ">
-                                
-                                <select class="form-control" id="sel1" onchange="location = this.value;">                                   <option selected disabled>Vilken kanal lyssnar du på?</option>                              
-                                    {% for x in channels: %}
+                            <div class="form-group "> 
+                                <select class="form-control" id="sel1" onchange="location = this.value;">                       <option selected disabled>Vilken kanal lyssnar du på?</option>                            
+<!--For every channel in the list channels, print the name of it. Name is taken from XML-code from SR.-->
+{% for x in channels: %}
                                     <option value="radiochannel/{{x['@id']}}">{{x['@name']}}</option>
-                                    {% endfor %}
+{% endfor %}
                                 </select>
                             </div>
                         </fieldset>
