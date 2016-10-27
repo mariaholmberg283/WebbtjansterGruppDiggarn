@@ -89,7 +89,6 @@ footer {
 
 #play, #next{
 	width: 80%;
-    margin-left: 200px;
     margin-top: 10px;
 }
 
@@ -117,10 +116,13 @@ footer {
     margin-top: 5px;
 }
 
-#apiD{
+#apiD, #loginbutton{
     float: right;
     margin-top: 10px;
     margin-right: 10px;
+}
+#apiD{
+	margin-top: 14px;	
 }
 
 #backbutton{
@@ -131,13 +133,6 @@ footer {
   background-color: white;
 }
 
-#login {
-	max-width: 400px;
-	border: none;
-	float: right;
-	text-align: center;
-}
-
 #loginbutton{
     border: none; 
     background-color: white;
@@ -146,3 +141,4 @@ footer {
 #loginbutton:hover {
   background-color: white;
 }
+
