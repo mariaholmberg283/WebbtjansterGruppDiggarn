@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import requests, xmltodict
 
 def getChannels():
@@ -13,6 +15,11 @@ def getChannel(channelID):
 
     urlLink = "http://api.sr.se/api/v2/channels/" + str(channelID)
     r = requests.get(urlLink)
+
+    #SR lämnar tillbaka channelID 0 om kanalen inte finns
+    if r.status_code == 404:
+        return {'error': "Channel does not exist"}
+    
     channelDict = xmltodict.parse(r.content)
     formattedDict = channelDict['sr']['channel']
     return formattedDict

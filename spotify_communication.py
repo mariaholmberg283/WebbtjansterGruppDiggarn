@@ -40,3 +40,8 @@ def getArtist(artist):
     else:
         return formatted
 
+def getMe(authHeader):
+    r = requests.get("https://api.spotify.com/v1/me", headers=authHeader)
+    result = json.loads(r.content)
+    return result
+    

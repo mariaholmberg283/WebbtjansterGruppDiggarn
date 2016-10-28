@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, jsonify, request, redirect
+from flask import Flask, render_template, jsonify, request, redirect, abort
 import requests, xmltodict, sr_communication, spotify_communication, json
 import base64
 
@@ -14,10 +14,11 @@ authorizedHeader = None
 @app.route('/')
 def index():
     dictionary = sr_communication.getChannels()
+    spotifyProfile = spotify_communication.getMe(authorizedHeader)
     if authorizedHeader:
-        return render_template('index.html', channels=dictionary['channel'], loggedIn = True)
+        return render_template('index.html', channels=dictionary['channel'], loggedIn = True, profile = spotifyProfile)
     else:
-        return render_template('index.html', channels=dictionary['channel'], loggedIn = False)        
+        return render_template('index.html', channels=dictionary['channel'], loggedIn = False, profile = {'error': ""})
     #return render_template('index.html', channels=dictionary['channel'])
 
 '''
@@ -27,6 +28,8 @@ def index():
 def radiochannel(channelID):
     dictionary2 = sr_communication.getChannel(channelID)
     dictionary = sr_communication.getChannels()
+    if 'error' in dictionary2:
+        abort(404)
     previousSong = sr_communication.previousPlaying(channelID)
     nowPlaying = sr_communication.getPlaying(channelID)
     nextSong = sr_communication.nextPlaying(channelID)
@@ -167,6 +170,23 @@ def getChannelPlaylist(channelID):
                 }
     
     return jsonify(channelInfo)
+
+@app.errorhandler(404)
+def pageNotFound(e):
+    dictionary = sr_communication.getChannels()
+    if authorizedHeader:
+        return render_template('404.html', channels=dictionary['channel'], loggedIn = True), 404
+    else:
+        return render_template('404.html', channels=dictionary['channel'], loggedIn = False), 404
+
+@app.errorhandler(500)
+def serverErr(e):
+    dictionary = sr_communication.getChannels()
+    if authorizedHeader:
+        return render_template('500.html', channels=dictionary['channel'], loggedIn = True), 404
+    else:
+        return render_template('500.html', channels=dictionary['channel'], loggedIn = False), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
