@@ -66,30 +66,19 @@ footer {
    
 }
 
-/* our css*/
-.row{
-	margin-top: 40px;
-}
+/* personalized css*/
 
-#SRlogo{
-    margin-top: 40px;
-}
-
-#img{
-    width: 200px;
-	height: 200px;
-	float: left;
-	margin-right: 30px;
-}
-
-.pre{
-    max-width: 120px;
-    font-weight: 800;
-}
+/*radiochannel.html*/
 
 #play, #next{
 	width: 80%;
     margin-top: 10px;
+}
+
+#spotifyplay{
+    margin-bottom: -15px;
+	margin-top: 5px;
+    margin-left: 0px;
 }
 
 #spotify, #spotifyplay{
@@ -98,10 +87,21 @@ footer {
     margin-top: -2px;
     max-height: 100px;
 }
-#spotifyplay{
-    margin-bottom: -15px;
-	margin-top: 5px;
-    margin-left: 0px;
+
+#info{
+    margin-top: 5px;
+}
+
+.pre{
+    max-width: 120px;
+    font-weight: 800;
+}
+
+#img{
+    width: 200px;
+	height: 200px;
+	float: left;
+	margin-right: 30px;
 }
 
 .title, .error{
@@ -112,38 +112,43 @@ footer {
     font-style: italic;
 }
 
-#info{
-    margin-top: 5px;
+/*header.html*/
+
+#SRlogo{
+    margin-top: 40px;
 }
 
-#apiD{
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-
-.logbutton{
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-#apiD{
-	margin-top: 14px;	
-}
-
-#backbutton{
-    border: none; 
-}
-
-#backbutton:hover {
-  background-color: white;
+.row{
+	margin-top: 40px;
 }
 
 .logbutton{
     border: none; 
     background-color: white;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .logbutton:hover {
+  background-color: white;
+}
+
+#apiD{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#apiD{
+	margin-top: 14px;	
+}
+
+/*api.html*/
+#backbutton{
+    border: none; 
+}
+
+#backbutton:hover {
   background-color: white;
 }
